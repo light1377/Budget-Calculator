@@ -1,6 +1,9 @@
 //setting budget
+//introduce variables for money left and money spent:
 let moneySpent = 0;
 let moneyLeft = 0;
+
+//function for taking off "£" sign in case users have entered the currency in the initial budget input:
 function leftMoneyCalculator() {
     return (
         Number(document.getElementById("budget").textContent.replace("£", "")) -

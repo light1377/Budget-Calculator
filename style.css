@@ -3,9 +3,14 @@ body {
     justify-content: center;
     background-color: #f2f1f0;
 }
-h1{
+/* h1{
     display: inline-flex;
 }
+#name{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+} */
 
 #banner {
     background-color: white;

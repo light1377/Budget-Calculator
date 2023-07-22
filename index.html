@@ -2,21 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Calculator</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="javascript" href="script.js">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget Calculator</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 </head>
 
-<body>
-    <header>
+<!-- 
+    <header id="name">
         <h1>Budget Calculator</h1>
-    </header>
-    
+    </header> -->
 
-
-
+<body>
     <div id="banner">
         <section id="section1">
             <div>
@@ -24,21 +22,24 @@
                 <p class="amount " id="budget"> 0 </p>
             </div>
             <div>
-                <h2>EXPENSES</h2>
+                <h2>Expences</h2>
                 <p class="amount" id="expenditure">0</p>
             </div>
             <div>
-                <h2>LEFT</h2>
+                <h2>Left</h2>
                 <p class="amount" id="left">0</p>
             </div>
         </section>
+
         <section id="section2">
-            <p>
-                Enter your expected Budget:
-            </p>
+
+            Enter your expected budget:
+
             <input id="budgetInput" type="number" min="0" value="0" step=".01"></input>
-            <button id="submit">SUBMIT</button>
+            <button id="submit">Submit</button>
+
         </section>
+
         <section id="titleExpenditures">
             <div>
                 <h1>Expenditures</h1>
