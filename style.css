@@ -3,6 +3,9 @@ body {
     justify-content: center;
     background-color: #f2f1f0;
 }
+h1{
+    display: inline-flex;
+}
 
 #banner {
     background-color: white;

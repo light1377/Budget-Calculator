@@ -1,76 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="javascript" href="script.js">
 </head>
 
 <body>
-    <h1>Budget Calculator</h1>
-
+    <header>
+        <h1>Budget Calculator</h1>
+    </header>
     
 
-      <div id="banner">
+
+
+    <div id="banner">
         <section id="section1">
-          <div>
-            <h2>INCOME</h2>
-            <p class="amount " id="income"> 0 </p>
-          </div>
-          <div>
-            <h2>EXPENSES</h2>
-            <p class="amount" id="expenditure">0</p>
-          </div>
-          <div>
-            <h2>LEFT</h2>
-            <p class="amount" id="left">0</p>
-          </div>
+            <div>
+                <h2>Budget</h2>
+                <p class="amount " id="budget"> 0 </p>
+            </div>
+            <div>
+                <h2>EXPENSES</h2>
+                <p class="amount" id="expenditure">0</p>
+            </div>
+            <div>
+                <h2>LEFT</h2>
+                <p class="amount" id="left">0</p>
+            </div>
         </section>
         <section id="section2">
-          <p>
-            ENTER THE EXPECTED INCOME:
-          </p>
-          <input id="incomeInput" type="number" min="0" value="0" step=".01"></input>
-          <button id="submit">SUBMIT</button>
+            <p>
+                Enter your expected Budget:
+            </p>
+            <input id="budgetInput" type="number" min="0" value="0" step=".01"></input>
+            <button id="submit">SUBMIT</button>
         </section>
         <section id="titleExpenditures">
-          <div>
-            <h1>Expenditures</h1>
-          </div>
+            <div>
+                <h1>Expenditures</h1>
+            </div>
         </section>
         <section id="section3">
-          <div>
-            <h2>TYPE</h2>
-            <select name="Expense" id="type">
-              <option value="Groceries">Groceries</option>
-              <option value="Education">Education</option>
-              <option value="Bills">Bills</option>
-              <option value="Transport">Transport</option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Eating Out">Eating Out</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          
-          <div>
-            <h2>DESCRIPTION</h2>
-            <input id="description"></input>
-          </div>
-          <div>
-            <h2>PRICE</h2>
-            <input id="price" type="number" min="0" value="0" step=".01"></input>
-          </div>
-    
-          <button id="addButton" onclick="listElement()">ADD</button>
-    
+            <div>
+                <h2>TYPE</h2>
+                <select name="Expense" id="type">
+                    <option value="Groceries">Groceries</option>
+                    <option value="Education">Education</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Eating Out">Eating Out</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div>
+                <h2>DESCRIPTION</h2>
+                <input id="description"></input>
+            </div>
+            <div>
+                <h2>PRICE</h2>
+                <input id="price" type="number" min="0" value="0" step=".01"></input>
+            </div>
+
+            <button id="addButton" onclick="listElement()">ADD</button>
+
         </section>
         <section id="sectionList">
-          <div id="warningContainer">
-            <p id="noItemsAddedWarning">No items added yet</p>
-          </div>
+            <div id="warningContainer">
+                <p id="noItemsAddedWarning">No items added yet</p>
+            </div>
         </section>
-    
-      </div>
 
-      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    </body>
+    </div>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</body>

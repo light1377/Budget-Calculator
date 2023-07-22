@@ -1,9 +1,9 @@
-//setting income
+//setting budget
 let moneySpent = 0;
 let moneyLeft = 0;
 function leftMoneyCalculator() {
     return (
-        Number(document.getElementById("income").textContent.replace("£", "")) -
+        Number(document.getElementById("budget").textContent.replace("£", "")) -
         moneySpent
     );
 }
@@ -41,17 +41,17 @@ function leftMoneySetter() {
         left.classList.remove("notEnoughMoneyWarning");
     }
 }
-const income = document.getElementById("income");
+const budget = document.getElementById("budget");
 const left = document.getElementById("left");
-const incomeButton = document.getElementById("submit");
-function incomeSetter() {
-    const inputIncome = +document.getElementById("incomeInput").value;
-    income.textContent = `£${inputIncome.toFixed(2).toString()}`;
+const budgetButton = document.getElementById("submit");
+function budgetSetter() {
+    const inputbudget = +document.getElementById("budgetInput").value;
+    budget.textContent = `£${inputBudget.toFixed(2).toString()}`;
     moneyLeft = leftMoneyCalculator();
     leftMoneySetter();
 }
 
-incomeButton.addEventListener("click", incomeSetter);
+budgetButton.addEventListener("click", budgetSetter);
 
 // expences list
 
@@ -141,6 +141,6 @@ function checkNoItemsAdded() {
             "sectionList"
         ).innerHTML = `<div id="warningContainer">
         <p id="noItemsAddedWarning">No items added yet</p>
-      </div>`;
+        </div>`;
     }
 }
