@@ -1,104 +1,146 @@
-// Get references to HTML elements
-const descriptionInput = document.getElementById('descriptionInput');
-const amountInput = document.getElementById('amountInput');
-const expenseTable = document.getElementById('expenseTable');
-const totalExpense = document.getElementById('totalExpense');
-
-// Create an empty array to store expenses
-let expenses = [];
-
-// Function to add an expense
-function addExpense() {
-    // Retrieve values from input fields
-    const description = descriptionInput.value;
-    const amount = parseFloat(amountInput.value);
-
-    // Validate user's input
-    if (description === '' || isNaN(amount)) {
-        alert('Please enter a valid description and amount.');
-        return;
-    }
-
-    // Create an expense object
-    const expense = {
-        description: description,
-        amount: amount
-    };
-
-    // Add the expense to the array
-    expenses.push(expense);
-
-    // Call a function to update the expense table
-    updateExpenseTable();
-
-    // Calculate and update the total expense
-    calculateTotalExpense();
-
-    // Clear input fields
-    descriptionInput.value = '';
-    amountInput.value = '';
+//setting income
+let moneySpent = 0;
+let moneyLeft = 0;
+function leftMoneyCalculator() {
+    return (
+        Number(document.getElementById("income").textContent.replace("£", "")) -
+        moneySpent
+    );
 }
+function updateBudgetDisplay() {
+    document.getElementById("expenditure").textContent = `£${moneySpent
+        .toFixed(2)
+        .toString()}`;
+    if (moneyLeft < 0) {
+        left.textContent = `You exceeded your budget by ${Math.abs(
+            moneyLeft
+        ).toFixed(2)} £`;
+    } else if (moneyLeft > 0) {
+        left.textContent = `£${moneyLeft.toFixed(2)}`;
+    } else if (moneyLeft === 0) {
+        left.textContent = "0";
+    }
+    console.log(moneyLeft);
 
-// Function to update the expense table
-function updateExpenseTable() {
-    // Clear the table body
-    expenseTable.innerHTML = '';
-
-    // Iterate over expenses array and create table rows
-    for (let i = 0; i < expenses.length; i++) {
-        const expense = expenses[i];
-
-        // Create a table row
-        const row = document.createElement('tr');
-
-        // Create table cells for description, amount, and delete button
-        const descriptionCell = document.createElement('td');
-        descriptionCell.textContent = expense.description;
-
-        const amountCell = document.createElement('td');
-        amountCell.textContent = expense.amount;
-
-        const deleteCell = document.createElement('td');
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.addEventListener('click', function() {
-            // Call a function to delete the expense
-            deleteExpense(i);
-        });
-
-        deleteCell.appendChild(deleteButton);
-
-        // Append cells to the row
-        row.appendChild(descriptionCell);
-        row.appendChild(amountCell);
-        row.appendChild(deleteCell);
-
-        // Append the row to the table
-        expenseTable.appendChild(row);
+    left.classList.toggle("amount", moneyLeft > 0 || moneyLeft === 0);
+    left.classList.toggle("notEnoughMoneyWarning", moneyLeft < 0);
+}
+function leftMoneySetter() {
+    left.textContent =
+        moneyLeft < 0
+            ? `You exceeded your budget by ${Math.abs(moneyLeft)
+                .toFixed(2)
+                .toString()} £`
+            : `£${moneyLeft.toFixed(2).toString()}`;
+    if (moneyLeft < 0) {
+        left.classList.remove("amount");
+        left.classList.add("notEnoughMoneyWarning");
+    }
+    if (moneyLeft > 0) {
+        left.classList.add("amount");
+        left.classList.remove("notEnoughMoneyWarning");
     }
 }
-
-// Function to delete an expense
-function deleteExpense(index) {
-    // Remove the expense from the array
-    expenses.splice(index, 1);
-
-    // Call a function to update the expense table
-    updateExpenseTable();
-
-    // Calculate and update the total expense
-    calculateTotalExpense();
+const income = document.getElementById("income");
+const left = document.getElementById("left");
+const incomeButton = document.getElementById("submit");
+function incomeSetter() {
+    const inputIncome = +document.getElementById("incomeInput").value;
+    income.textContent = `£${inputIncome.toFixed(2).toString()}`;
+    moneyLeft = leftMoneyCalculator();
+    leftMoneySetter();
 }
 
-// Function to calculate the total expense
-function calculateTotalExpense() {
-    let total = 0;
+incomeButton.addEventListener("click", incomeSetter);
 
-    // Iterate over expenses array and sum the amounts
-    for (let i = 0; i < expenses.length; i++) {
-        total += expenses[i].amount;
+// expences list
+
+var e = document.getElementById("type");
+function onChange() {
+    var text = e.options[e.selectedIndex].text;
+    return text; //Gets value from drop down
+}
+
+function listElement() {
+    const type = document.createElement("p");
+    type.textContent = onChange();
+    type.classList.add("itemType");
+    type.classList.add(onChange().replace(" ", ""));
+    const description = document.createElement("p");
+    description.textContent = document.getElementById("description").value;
+    const price = document.createElement("p");
+    price.textContent = `£${(+document.getElementById("price").value)
+        .toFixed(2)
+        .toString()}`;
+    const itemId = Math.random().toString();
+    price.setAttribute("id", itemId);
+    const listItem = document.createElement("div");
+    const elInfo = document.createElement("div");
+    listItem.appendChild(elInfo);
+    // const itemId = Math.random().toString();
+    elInfo.classList.add("listElInfo");
+    listItem.classList.add("listEl");
+    // listItem.setAttribute("id", itemId);
+    elInfo.appendChild(type);
+    elInfo.appendChild(description);
+    elInfo.appendChild(price);
+    const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("class", "deleteButton");
+    deleteButton.textContent = "DELETE";
+    deleteButton.addEventListener(
+        "mouseenter",
+        function (event) {
+            event.target.style.backgroundColor = "red";
+            event.target.style.color = "white";
+            event.target.style.border = "0.5px solid grey";
+        },
+        false
+    );
+    deleteButton.addEventListener(
+        "mouseleave",
+        function (event) {
+            event.target.style.backgroundColor = "#f4f4f4";
+            event.target.style.color = "black";
+            event.target.style.border = "0.5px solid grey";
+        },
+        false
+    );
+
+    listItem.appendChild(deleteButton);
+    deleteButton.addEventListener("click", function () {
+        moneySpent -= Number(
+            document.getElementById(itemId).textContent.replace("£", "")
+        );
+        listItem.remove();
+        moneyLeft = leftMoneyCalculator();
+        updateBudgetDisplay();
+        checkNoItemsAdded();
+    });
+
+    const warning = document.getElementById("warningContainer");
+    if (warning) {
+        document.getElementById("sectionList").removeChild(warning);
     }
+    document.getElementById("sectionList").appendChild(listItem);
+    moneySpent += +document.getElementById("price").value;
+    document.getElementById("expenditure").textContent = `£${moneySpent
+        .toFixed(2)
+        .toString()}`;
+    moneyLeft = leftMoneyCalculator();
+    leftMoneySetter();
+    document.getElementById("description").value = "";
+    document.getElementById("price").value = "";
+}
 
-    // Update the total expense display
-    totalExpense.textContent = total;
+function checkNoItemsAdded() {
+    const listItemElements = document.querySelectorAll(".listEl");
+
+    if (listItemElements.length === 0) {
+        document.getElementById("expenditure").textContent = "0";
+        document.getElementById(
+            "sectionList"
+        ).innerHTML = `<div id="warningContainer">
+        <p id="noItemsAddedWarning">No items added yet</p>
+      </div>`;
+    }
 }
