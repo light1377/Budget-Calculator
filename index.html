@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Budget Calculator</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js"></script>
 </head>
 
 <!-- 
@@ -35,7 +35,7 @@
 
             Enter your expected budget:
 
-            <input id="budgetInput" type="number" min="0" value="0" step=".01"></input>
+            <input id="budgetInput" type="number" placeholder="0" step=".01"></input>
             <button id="submit">Submit</button>
 
         </section>
@@ -61,11 +61,11 @@
 
             <div>
                 <h2>DESCRIPTION</h2>
-                <input id="description"></input>
+                <input id="description" placeholder="description"></input>
             </div>
             <div>
                 <h2>PRICE</h2>
-                <input id="price" type="number" min="0" value="0" step=".01"></input>
+                <input id="price" type="number" placeholder="0" step=".01"></input>
             </div>
 
             <button id="addButton" onclick="listElement()">ADD</button>
@@ -78,6 +78,8 @@
         </section>
 
     </div>
+
+
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </body>

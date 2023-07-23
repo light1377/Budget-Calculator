@@ -44,9 +44,12 @@ function leftMoneySetter() {
         left.classList.remove("notEnoughMoneyWarning");
     }
 }
+
+
 const budget = document.getElementById("budget");
 const left = document.getElementById("left");
 const budgetButton = document.getElementById("submit");
+
 function budgetSetter() {
     const inputbudget = +document.getElementById("budgetInput").value;
     budget.textContent = `£${inputBudget.toFixed(2).toString()}`;
