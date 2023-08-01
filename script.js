@@ -1,4 +1,3 @@
-//setting budget
 //introduce variables for money left and money spent:
 let moneySpent = 0;
 let moneyLeft = 0;
@@ -10,7 +9,7 @@ function leftMoneyCalculator() {
         moneySpent
     );
 }
-function updateBudgetDisplay() {
+/* function updateBudgetDisplay() {
     document.getElementById("expenditure").textContent = `£${moneySpent
         .toFixed(2)
         .toString()}`;
@@ -27,7 +26,7 @@ function updateBudgetDisplay() {
 
     left.classList.toggle("amount", moneyLeft > 0 || moneyLeft === 0);
     left.classList.toggle("notEnoughMoneyWarning", moneyLeft < 0);
-}
+} */
 function leftMoneySetter() {
     left.textContent =
         moneyLeft < 0
@@ -51,7 +50,7 @@ const left = document.getElementById("left");
 const budgetButton = document.getElementById("submit");
 
 function budgetSetter() {
-    const inputbudget = +document.getElementById("budgetInput").value;
+    const inputBudget = +document.getElementById("budgetInput").value;
     budget.textContent = `£${inputBudget.toFixed(2).toString()}`;
     moneyLeft = leftMoneyCalculator();
     leftMoneySetter();
@@ -105,7 +104,7 @@ function listElement() {
     deleteButton.addEventListener(
         "mouseleave",
         function (event) {
-            event.target.style.backgroundColor = "#f4f4f4";
+            event.target.style.backgroundColor = "#transparent";
             event.target.style.color = "black";
             event.target.style.border = "0.5px solid grey";
         },
